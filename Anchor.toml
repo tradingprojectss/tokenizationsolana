@@ -1,0 +1,19 @@
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+asset_tokenization = "TKNz8Qv2f7bRJPmGxKLdh4UT9qXvShNjSg7Rw1PuAE"
+
+[programs.devnet]
+asset_tokenization = "TKNz8Qv2f7bRJPmGxKLdh4UT9qXvShNjSg7Rw1PuAE"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
