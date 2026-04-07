@@ -7,16 +7,18 @@ import Link from "next/link";
 import { MOCK_PROPERTIES, KZT_PER_USD } from "@/lib/constants";
 import { calculateProgress, daysRemaining } from "@/lib/utils";
 import { useLang } from "@/lib/LangContext";
+import { useCampaigns } from "@/lib/campaignStore";
 
 export default function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const { connected } = useWallet();
   const { t } = useLang();
+  const { campaigns } = useCampaigns();
   const [tokenAmount, setTokenAmount] = useState(10);
   const [buying, setBuying] = useState(false);
   const [bought, setBought] = useState(false);
 
-  const property = MOCK_PROPERTIES.find((p) => p.id === id);
+  const property = MOCK_PROPERTIES.find((p) => p.id === id) ?? campaigns.find((c) => c.id === id);
   if (!property) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">

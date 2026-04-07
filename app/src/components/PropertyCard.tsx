@@ -10,10 +10,11 @@ interface PropertyCardProps {
   id: string; name: string; location: string; totalPrice: number; tokenPrice: number;
   totalTokens: number; tokensSold: number; deadline: number; status: string; image: string;
   annualYield: number; monthlyRent?: number; priceKZT?: number; area?: number; krishaUrl?: string;
+  isUserCreated?: boolean;
   [key: string]: unknown;
 }
 
-export function PropertyCard({ id, name, location, totalPrice, totalTokens, tokensSold, deadline, status, image, annualYield, priceKZT, area, krishaUrl }: PropertyCardProps) {
+export function PropertyCard({ id, name, location, totalPrice, totalTokens, tokensSold, deadline, status, image, annualYield, priceKZT, area, krishaUrl, isUserCreated }: PropertyCardProps) {
   const { t } = useLang();
   const progress = calculateProgress(tokensSold, totalTokens);
   const days = daysRemaining(deadline);
@@ -26,10 +27,15 @@ export function PropertyCard({ id, name, location, totalPrice, totalTokens, toke
         <div className="relative h-48 sm:h-52 overflow-hidden">
           <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent" />
-          <div className="absolute top-3 left-3">
+          <div className="absolute top-3 left-3 flex flex-col gap-1.5">
             <span className={`px-2.5 py-1 rounded-full text-xs font-bold backdrop-blur-md ${status === "Active" ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" : "bg-blue-500/20 text-blue-300 border border-blue-500/30"}`}>
               {status === "Funding" ? t("common.funding") : t("common.active_status")}
             </span>
+            {isUserCreated && (
+              <span className="px-2.5 py-1 rounded-full text-xs font-bold backdrop-blur-md bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                Новая
+              </span>
+            )}
           </div>
           <div className="absolute top-3 right-3">
             <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">

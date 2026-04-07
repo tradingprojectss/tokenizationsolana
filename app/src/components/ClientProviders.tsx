@@ -6,6 +6,7 @@ import { Navbar } from "./Navbar";
 import { Building2 } from "lucide-react";
 import Link from "next/link";
 import { LangProvider, useLang } from "@/lib/LangContext";
+import { CampaignProvider } from "@/lib/campaignStore";
 
 interface Props { children: ReactNode }
 
@@ -67,11 +68,13 @@ const Footer = () => {
 export const ClientProviders: FC<Props> = ({ children }) => {
   return (
     <LangProvider>
-      <WalletProvider>
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </WalletProvider>
+      <CampaignProvider>
+        <WalletProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </WalletProvider>
+      </CampaignProvider>
     </LangProvider>
   );
 };
