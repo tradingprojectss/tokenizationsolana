@@ -223,8 +223,10 @@ Campaign fully funded?
 
 | Item | Address |
 |------|---------|
-| Program ID | `HtZ7iRQVbKKJHCcd4VajdHMf42NSuoW7g7AyoQWBQ68a` |
+| Program ID | [`HtZ7iRQVbKKJHCcd4VajdHMf42NSuoW7g7AyoQWBQ68a`](https://explorer.solana.com/address/HtZ7iRQVbKKJHCcd4VajdHMf42NSuoW7g7AyoQWBQ68a?cluster=devnet) |
 | Network | Solana Devnet |
+| Explorer | [View on Solana Explorer](https://explorer.solana.com/address/HtZ7iRQVbKKJHCcd4VajdHMf42NSuoW7g7AyoQWBQ68a?cluster=devnet) |
+| Deploy TX | [`k7TA6U5u1YfpnNzApjwc5MCFPWiTg2hBT1Y2jDXtc9hvTU22sAYpkgYyx1DYhiEzSrixew3TdBuDwPFsNGAyi6y`](https://explorer.solana.com/tx/k7TA6U5u1YfpnNzApjwc5MCFPWiTg2hBT1Y2jDXtc9hvTU22sAYpkgYyx1DYhiEzSrixew3TdBuDwPFsNGAyi6y?cluster=devnet) |
 
 ### Instructions
 1. `initialize_property` — Create property campaign with metadata, mint SPL tokens

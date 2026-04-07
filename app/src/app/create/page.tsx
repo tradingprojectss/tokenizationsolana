@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { Building2, Upload, Info, Sparkles } from "lucide-react";
 import { KZT_PER_USD } from "@/lib/constants";
+import { useLang } from "@/lib/LangContext";
 
 export default function CreateCampaignPage() {
   const { connected } = useWallet();
+  const { t } = useLang();
   const [form, setForm] = useState({ name: "", location: "", totalPrice: "", description: "", buyerContribution: "", deadline: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -29,22 +31,22 @@ export default function CreateCampaignPage() {
 
   if (submitted) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mx-auto mb-6">
+      <div className="max-w-2xl mx-auto px-4 py-16 sm:py-20 text-center">
+        <div className="w-20 h-20 rounded-2xl bg-emerald-600 flex items-center justify-center mx-auto mb-6">
           <Sparkles className="h-10 w-10 text-white" />
         </div>
-        <h1 className="text-3xl font-extrabold text-white">Кампания создана!</h1>
-        <p className="mt-3 text-slate-400">В полной версии будет создан SPL токен и PDA аккаунт на Solana.</p>
+        <h1 className="text-2xl sm:text-3xl font-black text-white">{t("create.success")}</h1>
+        <p className="mt-3 text-slate-400 font-medium">{t("create.success_sub")}</p>
         <div className="mt-8 glass rounded-2xl p-6 text-left max-w-sm mx-auto space-y-3">
           {[
-            { label: "Квартира", value: form.name },
-            { label: "Токенов", value: tokensNeeded.toLocaleString() },
-            { label: "Ваша доля", value: `${buyerTokens.toLocaleString()} (${buyerPct.toFixed(0)}%)` },
-            { label: "Для инвесторов", value: investorTokens.toLocaleString() },
+            { label: t("create.property"), value: form.name },
+            { label: t("create.tokens"), value: tokensNeeded.toLocaleString() },
+            { label: t("create.your_share"), value: `${buyerTokens.toLocaleString()} (${buyerPct.toFixed(0)}%)` },
+            { label: t("create.for_investors"), value: investorTokens.toLocaleString() },
           ].map((r) => (
             <div key={r.label} className="flex justify-between text-sm">
-              <span className="text-slate-500">{r.label}</span>
-              <span className="font-medium text-white">{r.value}</span>
+              <span className="text-slate-500 font-medium">{r.label}</span>
+              <span className="font-bold text-white">{r.value}</span>
             </div>
           ))}
         </div>
@@ -53,78 +55,76 @@ export default function CreateCampaignPage() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <div className="mb-8">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white">Создать кампанию</h1>
-        <p className="mt-2 text-slate-400">Токенизируйте квартиру для краудфандинга на Solana</p>
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-4xl font-black text-white">{t("create.title")}</h1>
+        <p className="mt-2 text-slate-400 font-medium">{t("create.subtitle")}</p>
       </div>
 
-      <div className="glass rounded-2xl p-5 mb-8 flex gap-3 border-blue-500/20">
+      <div className="glass rounded-2xl p-4 sm:p-5 mb-6 sm:mb-8 flex gap-3 border-blue-500/20">
         <Info className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
-        <p className="text-sm text-slate-400">
-          <strong className="text-blue-400">Как это работает:</strong> Укажите стоимость и взнос. Платформа создаст SPL токены по $8. Инвесторы покупают токены. Квартира оформляется на ТОО в AIFC.
-        </p>
+        <p className="text-sm text-slate-400 font-medium"><strong className="text-blue-400">{t("create.how")}</strong> {t("create.how_desc")}</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="glass rounded-2xl p-6 space-y-5">
-          <h2 className="font-bold text-white text-lg">Данные о квартире</h2>
+      <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+        <div className="glass rounded-2xl p-5 sm:p-6 space-y-5">
+          <h2 className="font-bold text-white text-lg">{t("create.property_data")}</h2>
           {[
-            { label: "Название", placeholder: "напр., 1-комнатная, Бостандыкский район", key: "name" as const },
-            { label: "Адрес", placeholder: "напр., ул. Тимирязева 42, Алматы", key: "location" as const },
+            { label: t("create.name"), placeholder: "напр., 1-комнатная, Бостандыкский район", key: "name" as const },
+            { label: t("create.address"), placeholder: "напр., ул. Тимирязева 42, Алматы", key: "location" as const },
           ].map((f) => (
             <div key={f.key}>
-              <label className="block text-sm font-medium text-slate-400 mb-2">{f.label}</label>
+              <label className="block text-sm font-bold text-slate-400 mb-2">{f.label}</label>
               <input type="text" required placeholder={f.placeholder} value={form[f.key]}
                 onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none text-white placeholder:text-slate-600" />
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none text-white font-medium placeholder:text-slate-600" />
             </div>
           ))}
           <div>
-            <label className="block text-sm font-medium text-slate-400 mb-2">Описание</label>
-            <textarea rows={3} placeholder="Опишите квартиру..." value={form.description}
+            <label className="block text-sm font-bold text-slate-400 mb-2">{t("create.description")}</label>
+            <textarea rows={3} placeholder="..." value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none text-white placeholder:text-slate-600 resize-none" />
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none text-white font-medium placeholder:text-slate-600 resize-none" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-400 mb-2">Фото</label>
-            <div className="border-2 border-dashed border-white/10 rounded-xl p-8 text-center hover:border-blue-500/30 transition-colors cursor-pointer">
+            <label className="block text-sm font-bold text-slate-400 mb-2">{t("create.photos")}</label>
+            <div className="border-2 border-dashed border-white/10 rounded-xl p-6 sm:p-8 text-center hover:border-blue-500/30 transition-colors cursor-pointer">
               <Upload className="h-8 w-8 text-slate-600 mx-auto mb-2" />
-              <p className="text-sm text-slate-500">Загрузите фото (IPFS / Pinata)</p>
+              <p className="text-sm text-slate-500 font-medium">{t("create.upload")}</p>
             </div>
           </div>
         </div>
 
-        <div className="glass rounded-2xl p-6 space-y-5">
-          <h2 className="font-bold text-white text-lg">Финансы</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="glass rounded-2xl p-5 sm:p-6 space-y-5">
+          <h2 className="font-bold text-white text-lg">{t("create.finance")}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { label: "Стоимость квартиры ($)", placeholder: "80000", key: "totalPrice" as const, val: totalPrice },
-              { label: "Ваш первоначальный взнос ($)", placeholder: "15000", key: "buyerContribution" as const, val: buyerContribution },
+              { label: t("create.price"), placeholder: "80000", key: "totalPrice" as const, val: totalPrice },
+              { label: t("create.contribution"), placeholder: "15000", key: "buyerContribution" as const, val: buyerContribution },
             ].map((f) => (
               <div key={f.key}>
-                <label className="block text-sm font-medium text-slate-400 mb-2">{f.label}</label>
+                <label className="block text-sm font-bold text-slate-400 mb-2">{f.label}</label>
                 <input type="number" required min={0} placeholder={f.placeholder} value={form[f.key]}
                   onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none text-white placeholder:text-slate-600" />
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none text-white font-medium placeholder:text-slate-600" />
                 {f.val > 0 && <div className="text-xs text-slate-500 mt-1">~{(f.val * KZT_PER_USD).toLocaleString()} ₸</div>}
               </div>
             ))}
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-400 mb-2">Дедлайн сбора</label>
+            <label className="block text-sm font-bold text-slate-400 mb-2">{t("create.deadline")}</label>
             <input type="date" required value={form.deadline} onChange={(e) => setForm({ ...form, deadline: e.target.value })}
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none text-white" />
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500/50 outline-none text-white font-medium" />
           </div>
 
           {totalPrice > 0 && (
-            <div className="rounded-xl bg-white/3 p-5 space-y-2.5">
-              <h3 className="text-sm font-bold text-white mb-3">Превью токенизации</h3>
+            <div className="rounded-xl bg-white/3 p-4 sm:p-5 space-y-2.5">
+              <h3 className="text-sm font-bold text-white mb-3">{t("create.preview")}</h3>
               <div className="grid grid-cols-2 gap-2 text-sm">
-                <div className="flex justify-between"><span className="text-slate-500">Токенов</span><span className="text-white font-medium">{tokensNeeded.toLocaleString()}</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Цена</span><span className="text-white font-medium">$8 USDC</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Ваши</span><span className="text-blue-400 font-medium">{buyerTokens.toLocaleString()} ({buyerPct.toFixed(0)}%)</span></div>
-                <div className="flex justify-between"><span className="text-slate-500">Инвесторы</span><span className="text-emerald-400 font-medium">{investorTokens.toLocaleString()}</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">{t("create.tokens")}</span><span className="text-white font-bold">{tokensNeeded.toLocaleString()}</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">{t("detail.price")}</span><span className="text-white font-bold">$8 USDC</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">{t("create.yours")}</span><span className="text-blue-400 font-bold">{buyerTokens.toLocaleString()} ({buyerPct.toFixed(0)}%)</span></div>
+                <div className="flex justify-between"><span className="text-slate-500">{t("create.investors")}</span><span className="text-emerald-400 font-bold">{investorTokens.toLocaleString()}</span></div>
               </div>
             </div>
           )}
@@ -132,17 +132,11 @@ export default function CreateCampaignPage() {
 
         {connected ? (
           <button type="submit" disabled={submitting}
-            className="w-full py-4 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2">
-            {submitting ? (
-              <><div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Создание на Solana...</>
-            ) : (
-              <><Building2 className="h-5 w-5" /> Создать кампанию</>
-            )}
+            className="w-full py-3.5 sm:py-4 px-4 bg-blue-600 text-white rounded-xl font-bold text-base sm:text-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2">
+            {submitting ? <><div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> {t("create.submitting")}</> : <><Building2 className="h-5 w-5" /> {t("create.submit")}</>}
           </button>
         ) : (
-          <div className="text-center py-4 border border-dashed border-white/10 rounded-xl text-slate-500">
-            Подключите кошелёк для создания кампании
-          </div>
+          <div className="text-center py-4 border border-dashed border-white/10 rounded-xl text-slate-500 font-medium">{t("create.connect")}</div>
         )}
       </form>
     </div>
