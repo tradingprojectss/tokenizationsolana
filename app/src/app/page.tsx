@@ -7,7 +7,6 @@ import {
   TrendingUp,
   Users,
   DollarSign,
-  Clock,
   Landmark,
 } from "lucide-react";
 

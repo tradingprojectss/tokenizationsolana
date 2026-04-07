@@ -4,8 +4,6 @@ import { use, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import {
   MapPin,
-  Clock,
-  TrendingUp,
   FileText,
   Users,
   ArrowLeft,

@@ -12,6 +12,7 @@ export function useHomeCrowd() {
 
   const provider = useMemo(() => {
     if (!wallet.publicKey) return null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return new AnchorProvider(connection, wallet as any, {
       commitment: "confirmed",
     });
