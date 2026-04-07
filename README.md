@@ -21,7 +21,7 @@
 
 | Name | Role | Links |
 |------|------|-------|
-| Alidar Zhaxybekov | Founder & Developer | [Telegram](https://t.me/) · [X](https://x.com/) · [GitHub](https://github.com/tradingprojectss) |
+| Alidar Panaguzhiyev | Founder & Developer | [Telegram](https://t.me/unbothered) · · [GitHub](https://github.com/tradingprojectss) |
 
 ---
 
