@@ -3,62 +3,72 @@
 ## The Test
 > "If you remove Solana, does the product break?"
 
-**Yes. Completely.** Here's the detailed analysis.
+**Yes. Completely.** Here's the detailed analysis for the Kazakhstan market.
 
-## 1. Transaction Cost Economics
+## 1. KASE × Solana Foundation
 
-HomeCrowd's core mechanism is **monthly rent distribution** to all token holders. A typical property has 300–500 investors.
+**Kazakhstan Stock Exchange (KASE)** signed a memorandum with **Solana Foundation** for digital asset infrastructure. This is not theoretical — it's institutional backing for RWA tokenization specifically on Solana in Kazakhstan. No other blockchain has this level of regulatory alignment in the KZ market.
 
-| Chain | Cost per Transfer | 500 Distributions | Monthly Cost |
+## 2. Stablecoin Tenge on Solana
+
+**Digital Tenge (KZT)** already issued on Solana in the **National Bank of Kazakhstan regulatory sandbox**, supported by:
+- **Mastercard** as technology partner
+- **Eurasian Bank** as custodian
+
+Future integration means investors can buy property tokens directly in KZT — no USD conversion needed. This is a Solana-exclusive capability in the KZ market.
+
+## 3. Transaction Cost Economics
+
+HomeCrowd's core mechanism is **monthly rent distribution** to all token holders. A typical Almaty apartment has 150–200 investors.
+
+| Chain | Cost per Transfer | 200 Distributions | Monthly Cost |
 |-------|-------------------|-------------------|--------------|
-| **Solana** | ~$0.002 | **~$1** | **$12/year** |
-| Ethereum | ~$4.00 | ~$2,000 | $24,000/year |
-| Polygon | ~$0.05 | ~$25 | $300/year |
-| Avalanche | ~$0.10 | ~$50 | $600/year |
+| **Solana** | ~$0.002 | **~$0.40** | **$4.80/year** |
+| Ethereum | ~$4.00 | ~$800 | $9,600/year |
+| Polygon | ~$0.05 | ~$10 | $120/year |
+| TON | ~$0.05 | ~$10 | $120/year |
 
-On Ethereum, the cost of distributing rent **exceeds the rent itself** for many properties. Even on L2s, the cost is 25–50x higher than Solana.
+For a $650/month rent in Almaty, Ethereum gas fees ($800/month) would **exceed the rent itself**. Even on L2s and TON, costs are 25x higher than Solana.
 
-**Verdict**: Only Solana makes micro-distributions economically viable.
+**Verdict**: Only Solana makes micro-distributions economically viable for the KZ price range.
 
-## 2. Speed and UX
-
-Property token purchases should feel like buying stock — instant.
+## 4. Speed and UX
 
 | Chain | Finality | UX Impact |
 |-------|----------|-----------|
-| **Solana** | **400ms** | Instant purchase confirmation |
-| Ethereum | ~12s (1 block), 12min (safe) | "Pending..." spinner for seconds/minutes |
-| Bitcoin | ~60min | Completely unusable |
+| **Solana** | **400ms** | Instant token purchase |
+| Ethereum | ~12s (1 block) | "Pending..." spinner |
+| TON | ~5s | Noticeable delay |
 
-For a real estate platform competing with traditional brokerages, **sub-second UX is mandatory**.
+For a real estate platform competing with traditional banks, **sub-second UX is mandatory**.
 
-## 3. Regulatory Alignment
+## 5. AIFC Legal Framework
 
-- **KASE (Kazakhstan Stock Exchange)** has signed a memorandum with the **Solana Foundation** for digital asset infrastructure
-- **Stablecoin Tenge (KZT)** is being piloted on Solana within the **National Bank of Kazakhstan regulatory sandbox**
-- This creates a **unique regulatory pathway** for RWA tokenization that doesn't exist on any other chain
+**AIFC (Astana International Financial Centre)** operates under English common law:
+- Digital assets already regulated
+- SPV (ТОО) can be structured with full legal compliance
+- Clear path from on-chain tokens to off-chain property ownership
+- Combined with KASE × Solana memorandum = complete regulatory stack
 
-## 4. Token Standard Efficiency
+No other chain has this institutional + regulatory alignment in Kazakhstan.
 
-Solana's SPL Token program is purpose-built for high-throughput token operations:
+## 6. Token Standard Efficiency
+
+Solana's SPL Token program:
 - Creating a new token mint: ~$0.002
 - Associated Token Accounts: automatic, predictable
-- Token transfers: parallel execution via Sealevel runtime
+- Parallel execution via Sealevel runtime
 
-On Ethereum, deploying an ERC-20 contract costs $50–200+.
-
-## 5. Compressed NFTs for Documents
-
-Future feature: Property documents as **compressed NFTs** on Solana:
-- Appraisal reports, title deeds, inspection reports
-- 1000x cheaper than standard NFTs on any chain
-- Merkle tree compression enables millions of documents at negligible cost
+On Ethereum, deploying an ERC-20 contract costs $50–200+. For $60K–120K apartments in Kazakhstan, these costs matter.
 
 ## Conclusion
 
-HomeCrowd is not a "blockchain project that happens to use Solana." It's a platform whose entire economic model — micro-distributions, instant settlement, regulatory compliance — **requires Solana's specific capabilities**. Deploying on any other chain would make it:
-1. Economically infeasible (transaction costs)
-2. Uncompetitive on UX (slow finality)
-3. Regulatorily misaligned (no KASE/NB Kazakhstan pathway)
+HomeCrowd is built for Kazakhstan first. The combination of:
+1. **KASE × Solana** memorandum (institutional backing)
+2. **Digital Tenge on Solana** (native fiat integration)
+3. **$0.002 transactions** (viable for $650/month KZ rents)
+4. **AIFC legal framework** (regulatory compliance)
+
+...creates a **unique stack that only exists on Solana**. Deploy on any other chain and you lose the regulatory alignment, the Tenge integration, and the economic viability.
 
 **Remove Solana → HomeCrowd breaks.**

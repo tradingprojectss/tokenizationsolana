@@ -8,7 +8,7 @@
 <h1 align="center">🏠 HomeCrowd</h1>
 
 <p align="center">
-  <strong>Own your home without a mortgage — through tokenized crowdfunding on Solana</strong>
+  <strong>Своя квартира без ипотеки — через токенизированный краудфандинг на Solana</strong>
 </p>
 
 <p align="center">
@@ -27,31 +27,40 @@
 
 ## 🔍 Problem
 
-The average US home costs **$350,000–$400,000**. A typical first-time buyer has only ~$35K in savings.
+The average apartment in Almaty costs **$80,000–100,000**. A typical first-time buyer has only ~$10–15K in savings.
 
-With a traditional 30-year mortgage at 6.38%:
-- **Total repayment: ~$707,000** for a $350K home
-- **$357,000 in interest** goes to the bank
-- Young people are locked out of homeownership
+With a traditional 20-year mortgage in Kazakhstan at **18–20% annual rate**:
+- **Total repayment: ~$250,000** for an $80K apartment
+- **$170,000 in interest** goes to the bank
+- **70% of Kazakhstan's population is under 35** — massive demand, zero access
+- Average salary in Almaty: 500,000 KZT/month (~$1,000) — mortgage payments eat 60%+ of income
 
 **There has to be a better way.**
 
 ## 💡 Solution
 
-HomeCrowd lets a homebuyer create a **crowdfunding campaign** for a specific property on Solana. Here's how:
+HomeCrowd lets a homebuyer create a **crowdfunding campaign** for a specific apartment on Solana. Here's how:
 
 1. **Buyer lists a property** — uploads details, photos, appraisal documents
-2. **Platform tokenizes it** — creates 35,000 SPL tokens at $10 each for a $350K home
-3. **Buyer purchases their share** — e.g., 3,500 tokens ($35K = 10%)
-4. **Investors buy remaining tokens** with USDC — crowdfunding the home
-5. **Campaign reaches goal** → funds go to SPV (LLC) → property purchased
+2. **Platform tokenizes it** — creates 10,000 SPL tokens at $8 each for an $80K apartment
+3. **Buyer purchases their share** — e.g., 1,875 tokens ($15,000 = 18.75%)
+4. **Investors buy remaining tokens** with USDC — crowdfunding the purchase
+5. **Campaign reaches goal** → funds go to SPV (ТОО in AIFC) → apartment purchased
 6. **Buyer moves in, pays rent** → smart contract distributes to all token holders proportionally
 7. **Buyer gradually buys back tokens** → ownership % increases, rent decreases
-8. **100% bought back** → property transferred to buyer
+8. **100% bought back** → apartment transferred to buyer via notary + ЦОН
 
-**Total overpayment: ~$100–130K** vs **$357K with a mortgage**. No bank needed.
+**Total overpayment: ~$39K** vs **$170K with a KZ mortgage**. No bank needed.
 
 If the campaign doesn't reach its goal within 30 days → **automatic refund** to all investors.
+
+### Example: Asel's Journey
+
+> Asel, 26, works in Almaty, salary 500K KZT. Found a 1-bedroom apartment for $80,000 in Bostandyk district. Has $15,000 saved.
+>
+> Creates campaign: 10,000 tokens at $8 each. Buys 1,875 tokens ($15,000 = 18.75%). 200 investors cover remaining $65,000. Asel moves in, pays $650/month rent (81.25% of market rent $800). Buys back tokens monthly — full ownership in 5–7 years.
+>
+> **Saved: $131,000 compared to a bank mortgage.**
 
 ---
 
@@ -62,23 +71,24 @@ If the campaign doesn't reach its goal within 30 days → **automatic refund** t
 
 HomeCrowd **cannot exist** on Ethereum, TON, or any other chain. Here's why:
 
-### 1. Micro-transactions at Scale
-Monthly rent distribution to **500+ token holders** costs:
-- **Solana: ~$1 total** (500 transfers × $0.002)
-- **Ethereum: ~$2,000+** (500 transfers × $4+ gas)
+### 1. KASE × Solana Foundation
+**KASE (Kazakhstan Stock Exchange)** signed a memorandum with Solana Foundation for digital asset infrastructure. This is not theoretical — it's institutional backing for RWA tokenization on Solana in Kazakhstan.
 
-The entire business model collapses on any chain with high transaction fees.
+### 2. Stablecoin Tenge on Solana
+**Digital Tenge** already issued on Solana in the **National Bank of Kazakhstan regulatory sandbox**, supported by Mastercard and Eurasian Bank as custodian. Future integration means investors can buy tokens directly in KZT — no USD conversion needed.
 
-### 2. 400ms Finality
+### 3. Micro-transactions at Scale
+Monthly rent distribution to **200+ token holders** costs:
+- **Solana: ~$0.40 total** (200 transfers × $0.002)
+- **Ethereum: ~$800+** (200 transfers × $4+ gas)
+
+The entire business model collapses on any chain with high transaction fees. For $650/month rent in Almaty, Ethereum gas fees would exceed the rent itself.
+
+### 4. 400ms Finality
 Property token purchases need to feel instant — like buying stock. Solana's 400ms finality enables real-time trading. Ethereum's 12-second blocks make the UX feel broken.
 
-### 3. Regulatory Alignment
-- **KASE (Kazakhstan Stock Exchange)** signed a memorandum with Solana Foundation
-- **Stablecoin Tenge** already issued on Solana in National Bank regulatory sandbox
-- This creates a clear path to regulatory compliance for RWA tokenization
-
-### 4. On-chain Document Management
-Property appraisals, title deeds, and inspection reports stored via IPFS with hashes anchored on Solana — 1000x cheaper than any EVM chain for document management at scale.
+### 5. AIFC Legal Framework
+**AIFC (Astana International Financial Centre)** operates under English common law — digital assets are already regulated. SPV (ТОО) can be structured in AIFC with full legal compliance, creating a clear path from on-chain tokens to off-chain property ownership.
 
 ---
 
@@ -86,29 +96,36 @@ Property appraisals, title deeds, and inspection reports stored via IPFS with ha
 
 ### For the Homebuyer
 
-| | Mortgage | HomeCrowd |
+| | KZ Mortgage | HomeCrowd |
 |---|---|---|
-| Home price | $350,000 | $350,000 |
-| Down payment | $35,000 | $35,000 |
-| Duration | 30 years | 5–7 years |
-| Total overpayment | **$357,000** | **~$130,000** |
-| Total paid | $707,000 | $480,000 |
+| Apartment price | $80,000 | $80,000 |
+| Down payment | $15,000 | $15,000 |
+| Duration | 20 years | 5–7 years |
+| Interest rate | 18–20% | — |
+| Total overpayment | **$170,000** | **~$39,000** |
+| Total paid | $250,000 | $119,000 |
+| Savings | — | **$131,000** |
 | Flexibility | Locked to bank | Buy back at your pace |
 | Job loss risk | Bank forecloses | Stop buying, keep living |
 
 ### For the Investor
-- Rental yield: **5–8% annually** (above savings accounts)
-- Backed by real property (not speculative)
+- Rental yield: **6–10% annually** (KZ market rates, above bank deposits at 14%)
+- Backed by real property in Almaty/Astana (not speculative)
 - Liquid — sell tokens on secondary market anytime
 - Transparent — every rent distribution visible on-chain
+
+### Market Size
+- **TAM**: KZ residential real estate market ~$50–60 billion
+- **SAM**: Rental apartments in Almaty + Astana ~$15–20 billion
+- **SOM** (2-year target): 50 properties × $80–100K = **$4–5M tokenized**
 
 ---
 
 ## ✨ Features
 
-- **Property Campaigns** — Create tokenized crowdfunding campaigns for real estate
+- **Property Campaigns** — Create tokenized crowdfunding campaigns for KZ real estate
 - **SPL Token Minting** — Each property gets its own SPL token representing fractional ownership
-- **USDC Payments** — All transactions in USDC stablecoin (no volatile crypto)
+- **USDC Payments** — All transactions in USDC stablecoin (future: Stablecoin Tenge)
 - **Automatic Rent Distribution** — Smart contract distributes monthly rent to all token holders
 - **Token Buyback** — Buyer gradually repurchases tokens, increasing ownership percentage
 - **Auto-Refund** — Failed campaigns automatically refund investors
@@ -148,10 +165,12 @@ Property appraisals, title deeds, and inspection reports stored via IPFS with ha
 │  SPL Token Program  │  Associated Token  │  System Program   │
 └──────────────────────────────────────────────────────────────┘
                        │
-                       ▼
-              ┌─────────────────┐
-              │  IPFS (Pinata)  │ ← Property docs, photos
-              └─────────────────┘
+         ┌─────────────┴──────────────┐
+         ▼                            ▼
+┌─────────────────┐      ┌────────────────────┐
+│  IPFS (Pinata)  │      │  SPV (ТОО в AIFC)  │
+│  Property docs  │      │  Legal ownership   │
+└─────────────────┘      └────────────────────┘
 ```
 
 ### User Flow
@@ -166,7 +185,7 @@ Investors buy tokens with USDC ──→ USDC goes to vault
         │
         ▼
 Campaign fully funded?
-   ├── YES → finalize_campaign → USDC to SPV → Property purchased
+   ├── YES → finalize_campaign → USDC to SPV (ТОО) → Apartment purchased
    │           │
    │           ▼
    │      Buyer moves in, pays rent monthly
@@ -178,7 +197,7 @@ Campaign fully funded?
    │      buyback_tokens → Buyer repurchases, burns tokens
    │           │
    │           ▼
-   │      100% bought back → Property transferred to buyer
+   │      100% bought back → Apartment transferred via notary + ЦОН
    │
    └── NO (deadline passed) → claim_refund → USDC returned to investors
 ```
@@ -194,9 +213,9 @@ Campaign fully funded?
 | Token Standard | SPL Token |
 | Frontend | Next.js 15, TypeScript, Tailwind CSS |
 | Wallet | Phantom via @solana/wallet-adapter |
-| Stablecoin | USDC (Devnet) |
+| Stablecoin | USDC (Devnet) / Future: Stablecoin Tenge |
 | Documents | IPFS (Pinata) |
-| Legal Structure | SPV (LLC) — off-chain |
+| Legal Structure | SPV (ТОО) in AIFC — off-chain |
 
 ---
 
@@ -229,7 +248,6 @@ Campaign fully funded?
 
 ### Smart Contract
 ```bash
-# Install dependencies
 cd homecrowd
 anchor build
 
@@ -261,26 +279,27 @@ yarn dev
 - [x] Rent distribution mechanism
 - [x] Token buyback with burn
 - [x] Auto-refund for failed campaigns
-- [x] Next.js frontend with 5 pages
+- [x] Next.js frontend with 5 pages (KZ market focus)
 - [x] Phantom wallet integration
-- [x] Property browsing and detail views
+- [x] Property browsing with Almaty/Astana listings
 - [x] Campaign creation flow
-- [x] Investor dashboard
+- [x] Investor/buyer dashboard
 
 ### 🔜 Next
+- [ ] Integration with KASE via Solana infrastructure
+- [ ] Stablecoin Tenge support (post National Bank approval)
+- [ ] KYC/AML via AIFC (Astana International Financial Centre)
+- [ ] Partnership with KZ property management companies
 - [ ] Secondary market for token trading (orderbook)
 - [ ] Compressed NFTs for property documents
-- [ ] Multi-sig SPV wallet
-- [ ] Oracle integration for property valuation
-- [ ] Mobile-responsive optimizations
 
 ### 🔮 Future
-- [ ] KYC/AML integration
-- [ ] Legal framework for multiple jurisdictions
-- [ ] Insurance integration
-- [ ] Property management marketplace
-- [ ] Stablecoin Tenge integration (Kazakhstan)
-- [ ] KASE listing for property tokens
+- [ ] US market expansion (LLC in Delaware, $35T+ home equity market)
+- [ ] Global expansion to other emerging markets
+- [ ] Commercial real estate tokenization
+- [ ] Oracle integration for real-time property valuations
+- [ ] Multi-property portfolio management
+- [ ] Institutional investor onboarding
 
 ---
 
@@ -288,8 +307,8 @@ yarn dev
 
 - [Solana Documentation](https://docs.solana.com)
 - [Anchor Framework](https://www.anchor-lang.com)
-- [SPL Token Program](https://spl.solana.com/token)
-- [Solana Wallet Adapter](https://github.com/solana-labs/wallet-adapter)
+- [AIFC Digital Asset Regulations](https://aifc.kz)
+- [KASE × Solana Memorandum](https://kase.kz)
 
 ---
 

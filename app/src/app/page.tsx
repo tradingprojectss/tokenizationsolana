@@ -8,6 +8,7 @@ import {
   Users,
   DollarSign,
   Clock,
+  Landmark,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -20,33 +21,33 @@ export default function HomePage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-700/50 border border-blue-500/30 text-sm mb-6">
               <Zap className="h-4 w-4 text-yellow-400" />
-              Built on Solana &middot; Sub-second finality
+              Built on Solana &middot; KASE Partnership &middot; Digital Tenge
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              Own Your Home
+              Своя квартира
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
-                Without a Mortgage
+                без ипотеки
               </span>
             </h1>
             <p className="mt-6 text-lg text-blue-100 max-w-2xl">
-              Crowdfund your home purchase on Solana. Investors buy property
-              tokens, you move in and buy back over time. Save $200K+ compared
-              to a 30-year mortgage.
+              Краудфандинг недвижимости на Solana. Инвесторы покупают токены
+              квартиры, вы заселяетесь и выкупаете долю за 5-7 лет. Экономия
+              $131,000 по сравнению с ипотекой в Казахстане.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/properties"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
-                Browse Properties
+                Смотреть квартиры
                 <ArrowRight className="h-5 w-5" />
               </Link>
               <Link
                 href="/create"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-lg font-semibold border border-blue-500 hover:bg-blue-600 transition-colors"
               >
-                List Your Property
+                Разместить квартиру
               </Link>
             </div>
           </div>
@@ -58,21 +59,21 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-red-600">$707,000</div>
+              <div className="text-3xl font-bold text-red-600">$250,000</div>
               <div className="text-sm text-slate-500 mt-1">
-                Traditional mortgage total cost (30yr @ 6.38%)
+                Ипотека в КЗ: итого за $80K квартиру (20 лет, 18%)
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">$450,000</div>
+              <div className="text-3xl font-bold text-green-600">$119,000</div>
               <div className="text-sm text-slate-500 mt-1">
-                HomeCrowd total cost (rent + buyback)
+                HomeCrowd: аренда + выкуп токенов за 5-7 лет
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">$257,000</div>
+              <div className="text-3xl font-bold text-blue-600">$131,000</div>
               <div className="text-sm text-slate-500 mt-1">
-                You save — no bank, no 30 years of debt
+                Вы экономите — без банка, без 20 лет долга
               </div>
             </div>
           </div>
@@ -83,9 +84,9 @@ export default function HomePage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900">How It Works</h2>
+            <h2 className="text-3xl font-bold text-slate-900">Как это работает</h2>
             <p className="mt-3 text-slate-600">
-              Three simple steps to homeownership
+              Три простых шага к собственной квартире
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -93,20 +94,20 @@ export default function HomePage() {
               {
                 step: "01",
                 icon: Building2,
-                title: "List Your Property",
-                desc: "Create a campaign with property details. The platform tokenizes it into affordable $10 shares on Solana.",
+                title: "Разместите квартиру",
+                desc: "Создайте кампанию с данными о квартире. Платформа токенизирует её в доступные доли по $8 на Solana.",
               },
               {
                 step: "02",
                 icon: Users,
-                title: "Investors Crowdfund",
-                desc: "Investors browse properties and buy tokens with USDC. When fully funded, the property is purchased.",
+                title: "Инвесторы финансируют",
+                desc: "Инвесторы покупают токены за USDC. Когда цель достигнута — квартира приобретается через ТОО в AIFC.",
               },
               {
                 step: "03",
                 icon: TrendingUp,
-                title: "Move In & Buy Back",
-                desc: "You move in, pay rent to token holders. Gradually buy back tokens until you own 100%.",
+                title: "Заселяйтесь и выкупайте",
+                desc: "Вы заселяетесь, платите аренду токенхолдерам. Постепенно выкупаете токены до 100% владения.",
               },
             ].map((item) => (
               <div
@@ -129,43 +130,81 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Solana */}
+      {/* Asel's Story */}
       <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900">
+              История Асель
+            </h2>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100">
+            <div className="space-y-4 text-slate-700">
+              <p>
+                <strong>Асель, 26 лет</strong>, работает в Алматы, зарплата 500,000 KZT (~$1,000).
+                Нашла 1-комнатную квартиру за <strong>$80,000</strong> в Бостандыкском районе.
+                Накопила <strong>$15,000</strong>.
+              </p>
+              <p>
+                Создаёт кампанию: <strong>10,000 токенов по $8</strong>. Покупает 1,875 токенов
+                ($15,000 = 18.75%). <strong>200 инвесторов</strong> покрывают оставшиеся $65,000.
+              </p>
+              <p>
+                Асель заселяется, платит <strong>$650/месяц</strong> аренды (81.25% от рыночных $800).
+                Ежемесячно выкупает токены — <strong>полное владение за 5-7 лет</strong>.
+              </p>
+              <div className="mt-6 grid grid-cols-2 gap-4">
+                <div className="bg-white rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-red-600">$250,000</div>
+                  <div className="text-xs text-slate-500">С ипотекой (18%, 20 лет)</div>
+                </div>
+                <div className="bg-white rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-green-600">$119,000</div>
+                  <div className="text-xs text-slate-500">С HomeCrowd (5-7 лет)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Solana */}
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-slate-900">
-              Why This Only Works on Solana
+              Почему только Solana
             </h2>
             <p className="mt-3 text-slate-600 max-w-2xl mx-auto">
-              If you remove Solana, HomeCrowd breaks. Here&apos;s why.
+              Убери Solana — HomeCrowd перестаёт работать
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
+                icon: Landmark,
+                title: "KASE × Solana Foundation",
+                desc: "Казахстанская фондовая биржа подписала меморандум с Solana Foundation. Институциональная поддержка токенизации RWA в Казахстане.",
+              },
+              {
                 icon: DollarSign,
-                title: "Micro-transactions at Scale",
-                desc: "Monthly rent distribution to 500+ token holders costs ~$1 total on Solana. On Ethereum, that's $2,000+ in gas fees — making the entire model economically impossible.",
+                title: "Стейблкоин Тенге на Solana",
+                desc: "Цифровой тенге уже выпущен на Solana в регуляторной песочнице Нацбанка РК при поддержке Mastercard. Будущая интеграция — покупка токенов напрямую в KZT.",
               },
               {
                 icon: Zap,
-                title: "400ms Finality",
-                desc: "Instant token purchases and real-time rent distribution. No waiting 12 seconds for block confirmation. Property tokens trade as fast as stocks.",
+                title: "Транзакции за $0.001",
+                desc: "Распределение аренды 200 держателям: ~$0.40 на Solana vs $800+ на Ethereum. При аренде $650/мес в Алматы, газ Ethereum превысил бы саму аренду.",
               },
               {
                 icon: Shield,
-                title: "Regulatory Alignment",
-                desc: "KASE (Kazakhstan Stock Exchange) signed a memorandum with Solana Foundation. Stablecoin Tenge already issued on Solana in the National Bank regulatory sandbox.",
-              },
-              {
-                icon: Clock,
-                title: "Compressed NFTs for Documents",
-                desc: "Property documents, appraisals, and legal records stored as compressed NFTs on Solana — 1000x cheaper than any other chain for on-chain document management.",
+                title: "AIFC + English Law",
+                desc: "AIFC (Астана) работает по английскому праву — цифровые активы уже регулируются. SPV (ТОО) в AIFC обеспечивает юридическую связь токенов и недвижимости.",
               },
             ].map((item) => (
               <div
                 key={item.title}
-                className="flex gap-4 p-6 rounded-xl border border-slate-200 hover:border-blue-300 transition-colors"
+                className="flex gap-4 p-6 rounded-xl border border-slate-200 hover:border-blue-300 transition-colors bg-white"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                   <item.icon className="h-6 w-6 text-white" />
@@ -185,17 +224,17 @@ export default function HomePage() {
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-900 to-indigo-900 text-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold">Ready to Own Your Future?</h2>
+          <h2 className="text-3xl font-bold">Готовы владеть своим будущим?</h2>
           <p className="mt-4 text-blue-200">
-            Join the revolution in homeownership. No banks, no 30-year debt, no
-            $357K overpayment.
+            70% населения Казахстана моложе 35 лет. Пора менять правила игры.
+            Без банков, без 20 лет долга, без переплаты $170,000.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/properties"
               className="inline-flex items-center gap-2 px-8 py-3 bg-white text-blue-900 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
             >
-              Start Investing
+              Начать инвестировать
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
