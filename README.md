@@ -21,7 +21,7 @@
 
 | Name | Role | Links |
 |------|------|-------|
-| Ali Dar | Solo Developer | [GitHub](https://github.com/alidar) |
+| Alidar Zhaxybekov | Founder & Developer | [Telegram](https://t.me/) · [X](https://x.com/) · [GitHub](https://github.com/tradingprojectss) |
 
 ---
 
@@ -79,6 +79,28 @@ Property token purchases need to feel instant — like buying stock. Solana's 40
 
 ### 4. On-chain Document Management
 Property appraisals, title deeds, and inspection reports stored via IPFS with hashes anchored on Solana — 1000x cheaper than any EVM chain for document management at scale.
+
+---
+
+## 💰 Economics
+
+### For the Homebuyer
+
+| | Mortgage | HomeCrowd |
+|---|---|---|
+| Home price | $350,000 | $350,000 |
+| Down payment | $35,000 | $35,000 |
+| Duration | 30 years | 5–7 years |
+| Total overpayment | **$357,000** | **~$130,000** |
+| Total paid | $707,000 | $480,000 |
+| Flexibility | Locked to bank | Buy back at your pace |
+| Job loss risk | Bank forecloses | Stop buying, keep living |
+
+### For the Investor
+- Rental yield: **5–8% annually** (above savings accounts)
+- Backed by real property (not speculative)
+- Liquid — sell tokens on secondary market anytime
+- Transparent — every rent distribution visible on-chain
 
 ---
 

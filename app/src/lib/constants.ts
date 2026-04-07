@@ -10,7 +10,7 @@ export const USDC_MINT = new PublicKey(
   "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU" // devnet USDC
 );
 
-export const SOLANA_RPC_URL = "https://api.devnet.solana.com";
+export const SOLANA_RPC_URL = process.env.NEXT_PUBLIC_RPC_URL || "http://localhost:8899";
 
 // Mock data for demo
 export const MOCK_PROPERTIES = [
