@@ -25,25 +25,61 @@ body {
 ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
+/* Animations */
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.4; }
+  0%, 100% { opacity: 0.3; }
   50% { opacity: 0.7; }
 }
 
-.animate-slide-up { animation: slide-up 0.5s ease-out forwards; }
-.animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+@keyframes gradient-slow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+.animate-slide-up { animation: slide-up 0.6s ease-out forwards; }
+.animate-glow-pulse { animation: glow-pulse 4s ease-in-out infinite; }
+.animate-gradient-slow {
+  background-size: 200% 200%;
+  animation: gradient-slow 6s ease infinite;
+}
+.animate-float { animation: float 5s ease-in-out infinite; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+.animate-pulse-ring { animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* Glass */
 .glass {
   background: rgba(17, 24, 39, 0.7);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* Gradient text */
 .text-gradient {
   background: linear-gradient(135deg, #60a5fa, #34d399);
   -webkit-background-clip: text;
@@ -51,14 +87,16 @@ body {
   background-clip: text;
 }
 
+/* Card hover */
 .card-hover {
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(59, 130, 246, 0.08);
 }
 
+/* Grid background */
 .bg-grid {
   background-image:
     linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
@@ -66,6 +104,24 @@ body {
   background-size: 60px 60px;
 }
 
+/* Progress glow */
+.progress-glow {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Live indicator */
+.live-dot {
+  position: relative;
+}
+.live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  animation: pulse-ring 2s infinite;
+}
+
+/* Wallet adapter */
 .wallet-adapter-button {
   font-family: inherit !important;
   background: #3b82f6 !important;
@@ -77,8 +133,42 @@ body {
 }
 .wallet-adapter-button:hover {
   background: #2563eb !important;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35) !important;
 }
 .wallet-adapter-modal-wrapper { font-family: inherit !important; }
 
 input, textarea, select { color-scheme: dark; }
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: 3px solid #1e3a5f;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+  transition: all 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.6);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: 3px solid #1e3a5f;
+}

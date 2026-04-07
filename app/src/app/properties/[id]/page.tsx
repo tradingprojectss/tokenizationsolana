@@ -2,7 +2,7 @@
 
 import { use, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { MapPin, FileText, Users, ArrowLeft, ExternalLink, Wallet, TrendingUp, Home, Calendar, Layers, Ruler } from "lucide-react";
+import { MapPin, FileText, Users, ArrowLeft, ExternalLink, Wallet, TrendingUp, Home, Calendar, Layers, Ruler, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { MOCK_PROPERTIES, KZT_PER_USD } from "@/lib/constants";
 import { calculateProgress, daysRemaining } from "@/lib/utils";
@@ -14,6 +14,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
   const { t } = useLang();
   const [tokenAmount, setTokenAmount] = useState(10);
   const [buying, setBuying] = useState(false);
+  const [bought, setBought] = useState(false);
 
   const property = MOCK_PROPERTIES.find((p) => p.id === id);
   if (!property) {
@@ -34,9 +35,10 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
   const handleBuy = async () => {
     if (!connected) return;
     setBuying(true);
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 2500));
     setBuying(false);
-    alert(`Demo: ${usdcCost} USDC for ${tokenAmount} tokens`);
+    setBought(true);
+    setTimeout(() => setBought(false), 5000);
   };
 
   const mockInvestors = [
@@ -210,10 +212,29 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
                     </div>
                   </div>
                 </div>
-                {connected ? (
+                {bought ? (
+                  <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-4 text-center space-y-2">
+                    <CheckCircle2 className="h-8 w-8 text-emerald-400 mx-auto" />
+                    <div className="text-emerald-400 font-bold text-sm">Транзакция подтверждена!</div>
+                    <div className="text-xs text-slate-500">{tokenAmount} токенов · ${usdcCost} USDC</div>
+                    <a href={`https://explorer.solana.com/address/HtZ7iRQVbKKJHCcd4VajdHMf42NSuoW7g7AyoQWBQ68a?cluster=devnet`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 font-bold">
+                      Solana Explorer <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                ) : connected ? (
                   <button onClick={handleBuy} disabled={buying}
-                    className="w-full py-3.5 px-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2">
-                    {buying ? <><div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> {t("detail.processing")}</> : <><Wallet className="h-5 w-5" /> {t("detail.buy_btn")} {tokenAmount} {t("detail.tokens")}</>}
+                    className="w-full py-3.5 px-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2">
+                    {buying ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <span>{t("detail.processing")}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Wallet className="h-5 w-5" />
+                        {t("detail.buy_btn")} {tokenAmount} {t("detail.tokens")}
+                      </>
+                    )}
                   </button>
                 ) : (
                   <div className="text-center py-4 text-sm text-slate-500 border border-dashed border-white/10 rounded-xl font-medium">{t("detail.connect")}</div>
