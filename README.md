@@ -1,4 +1,5 @@
 # 🏠 HomeCrowd
+# CODES ARE STILL IN DEVELOPING PROGRESS!!! NOT FULLY COMPLETED
 
 **Buy your own home without a mortgage — through tokenized crowdfunding on Solana.**
 
