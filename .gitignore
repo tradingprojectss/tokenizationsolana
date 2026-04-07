@@ -1,0 +1,7 @@
+node_modules/
+target/
+.next/
+.anchor/
+test-ledger/
+*.so
+.DS_Store
